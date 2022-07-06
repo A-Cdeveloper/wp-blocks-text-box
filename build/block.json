@@ -13,7 +13,11 @@
     "box"
   ],
   "supports": {
-    "html": false
+    "html": false,
+    "color": {
+      "text": true,
+      "background": true
+    }
   },
   "textdomain": "text-box",
   "editorScript": "file:./index.js",
@@ -30,10 +34,12 @@
       "default": "left"
     },
     "backgroundColor": {
-      "type": "string"
+      "type": "string",
+      "default": "magenta"
     },
     "textColor": {
-      "type": "string"
+      "type": "string",
+      "default": "white"
     },
     "customBackgroundColor": {
       "type": "string"
