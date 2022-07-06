@@ -2,8 +2,21 @@
  * styleson the front of your site
  */
 
-.wp-block-create-block-boilerplate {
-	background-color: #21759b;
-	color: #fff;
-	padding: 2px;
+.wp-block-blocks-course-text-box {
+
+
+	&.text-box-align-right {
+		text-align: right;
+	}
+
+	&.text-box-align-left {
+		text-align: left;
+	}
+
+	&.text-box-align-center {
+		text-align: center;
+	}
+
+
 }
+

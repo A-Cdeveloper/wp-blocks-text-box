@@ -1,0 +1,1 @@
+{"version":3,"file":"index.css","mappings":";;;AAAA;;EAAA;AAIA;EACC;AAAD,C","sources":["webpack://boilerplate/./src/editor.scss"],"sourcesContent":["/**\r\n * styles editor only.\r\n */\r\n\r\n.wp-block-create-block-text-box {\r\n\tborder: 1px dotred #777;\r\n}\r\n"],"names":[],"sourceRoot":""}

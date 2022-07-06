@@ -1,17 +1,42 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
-	"name": "create-block/boilerplate",
+	"name": "blocks-course/text-box",
 	"version": "0.1.0",
-	"title": "Boilerplate",
-	"category": "widgets",
-	"icon": "smiley",
-	"description": "Example static block scaffolded with Create Block tool.",
+	"title": "Text Box",
+	"category": "text",
+	"icon": "text-page",
+	"description": "A simple text box.",
+	"keywords": [ "text", "paragraph", "box" ],
 	"supports": {
 		"html": false
 	},
-	"textdomain": "boilerplate",
+	"textdomain": "text-box",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
-	"style": "file:./style-index.css"
+	"style": "file:./style-index.css",
+	
+	"attributes": {
+		"text": {
+			"type": "string",
+			"source": "html",
+			"selector" : "h4"
+		},
+		"alignment" : {
+			"type": "string",
+			"default": "left"
+		},
+		"backgroundColor" : {
+			"type" : "string"
+		},
+		"textColor" : {
+			"type" : "string"
+		},
+		"customBackgroundColor" : {
+			"type" : "string"
+		},
+		"customTextColor" : {
+			"type" : "string"
+		}
+	}
 }
