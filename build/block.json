@@ -16,9 +16,25 @@
     "html": false,
     "color": {
       "text": true,
-      "background": true
+      "background": true,
+      "gradients": true
+    },
+    "spacing": {
+      "padding": true
     }
   },
+  "styles": [
+    {
+      "name": "squared",
+      "label": "Squared",
+      "isDefault": true
+    },
+    {
+      "name": "rounded",
+      "label": "Rounded",
+      "isDefault": false
+    }
+  ],
   "textdomain": "text-box",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
@@ -33,19 +49,40 @@
       "type": "string",
       "default": "left"
     },
+    "shadow": {
+      "type": "boolean",
+      "default": false
+    },
+    "shadowOpacity": {
+      "type": "number",
+      "default": 30
+    },
     "backgroundColor": {
-      "type": "string",
-      "default": "magenta"
+      "type": "string"
     },
     "textColor": {
+      "type": "string"
+    },
+    "gradient": {
       "type": "string",
-      "default": "white"
+      "default": "green-yellow"
     },
-    "customBackgroundColor": {
-      "type": "string"
-    },
-    "customTextColor": {
-      "type": "string"
+    "style": {
+      "type": "object",
+      "default": {
+        "color": {
+          "background": "#f30",
+          "text": "#000"
+        },
+        "spacing": {
+          "padding": {
+            "top": "15px",
+            "right": "15px",
+            "bottom": "15px",
+            "left": "15px"
+          }
+        }
+      }
     }
   }
 }

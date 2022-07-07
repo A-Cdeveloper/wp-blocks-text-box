@@ -4,8 +4,8 @@
 /**
  * styles editor only.
  */
-.wp-block-create-block-text-box {
-  border: 1px dotred #777;
+.wp-block-blocks-course-text-box .text-box-title {
+  margin: 0;
 }
 
 /*# sourceMappingURL=index.css.map*/

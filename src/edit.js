@@ -4,13 +4,22 @@ import {
 	RichText,
 	BlockControls,
 	AlignmentToolbar,
+	InspectorControls,
 } from '@wordpress/block-editor';
 
+// eslint-disable-next-line
+import {
+	__experimentalBoxControl as BoxControl,
+	PanelBody,
+	RangeControl,
+} from '@wordpress/components';
+import classnames from 'classnames';
 import './editor.scss';
 
-export default function Edit( props ) {
-	const { attributes, setAttributes } = props;
-	const { text, alignment } = attributes;
+const { __Visualizer: BoxControlVisualizer } = BoxControl;
+
+export default function Edit( { attributes, setAttributes } ) {
+	const { text, alignment, style, shadow, shadowOpacity } = attributes;
 
 	const onChangeText = ( txt ) => {
 		setAttributes( { text: txt } );
@@ -20,25 +29,88 @@ export default function Edit( props ) {
 		setAttributes( { alignment: val } );
 	};
 
+	const onChangeShadowOpacity = ( newOpacity ) => {
+		setAttributes( { shadowOpacity: newOpacity } );
+	};
+
+	const toggleShadow = () => {
+		setAttributes( { shadow: ! shadow } );
+	};
+
+	const classes = classnames( `text-box-align-${ alignment }`, {
+		'has-shadow': shadow,
+		[ `shadow-opacity-${ shadowOpacity }` ]: shadow && shadowOpacity,
+	} );
+
 	return (
 		<>
-			<BlockControls>
+			<InspectorControls>
+				{ shadow && (
+					<PanelBody
+						title={ __( 'Shadow Settings', 'text-box' ) }
+						initialOpen={ false }
+					>
+						{ /* <RadioControl
+						label="Change shadow opacity"
+						//help="Select shadow opacity"
+						selected={ `${shadowOpacity}` }
+						options={ [
+							{ label: '10', value: '10' },
+							{ label: '20', value: '20' },
+							{ label: '30', value: '30' },
+							{ label: '40', value: '40' }
+						] }
+						onChange={onChangeShadowOpacity}
+					/> */ }
+
+						<RangeControl
+							label={ __( 'Shadow Opacity', 'text-box' ) }
+							value={ shadowOpacity }
+							onChange={ onChangeShadowOpacity }
+							min={ 10 }
+							max={ 40 }
+							step={ 10 }
+						/>
+					</PanelBody>
+				) }
+			</InspectorControls>
+
+			<BlockControls
+				controls={ [
+					{
+						icon: 'admin-page',
+						title: __( 'Shadow', 'text-box' ),
+						onClick: toggleShadow,
+						isActive: shadow,
+					},
+				] }
+			>
 				<AlignmentToolbar
 					onChange={ onChangeAlignment }
 					value={ alignment }
 				/>
 			</BlockControls>
 
-			<RichText
+			<div
 				{ ...useBlockProps( {
-					className: `text-box-align-${ alignment }`,
+					className: classes,
 				} ) }
-				onChange={ onChangeText }
-				value={ text }
-				placeholder={ __( 'Your Text', 'text-box' ) }
-				tagName="h4"
-				allowedFormats={ [] }
-			/>
+			>
+				<RichText
+					onChange={ onChangeText }
+					value={ text }
+					placeholder={ __( 'Your Text', 'text-box' ) }
+					tagName="h4"
+					allowedFormats={ [] }
+					className="text-box-title"
+				/>
+				<BoxControlVisualizer
+					values={ style && style.spacing && style.spacing.padding }
+					showValues={
+						style && style.visualizers && style.visualizers.padding
+					}
+				/>
+			</div>
 		</>
 	);
 }
