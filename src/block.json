@@ -31,6 +31,14 @@
 		"isDefault": false		
 		}
 	],
+	"example": {
+		"attributes": {
+			"text" : "This is some text",
+			"gradient": "magenta-blue",
+			"shadow" : true, 
+			"color" : "white"
+		}
+	},
 	"textdomain": "text-box",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
@@ -40,9 +48,9 @@
 		"text": {
 			"type": "string",
 			"source": "html",
-			"selector" : "h4"
+			"selector" : "p"
 		},
-		"alignment" : {
+		"textAlignment" : {
 			"type": "string",
 			"default": "left"
 		},
@@ -61,15 +69,14 @@
 			"type" : "string"
 		},
 		"gradient": {
-			"type": "string",
-			"default": "green-yellow"
+			"type": "string"
 		},
 		"style":{
 			"type": "object",
 			"default": {
 				"color": {
 					"background": "#f30",
-					"text" : "#000"
+					"text" : "#fff"
 				}, 
 				"spacing": {
 					"padding" : {"top":"15px","right":"15px","bottom":"15px","left":"15px"}

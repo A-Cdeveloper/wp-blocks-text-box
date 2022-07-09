@@ -19,14 +19,14 @@ import './editor.scss';
 const { __Visualizer: BoxControlVisualizer } = BoxControl;
 
 export default function Edit( { attributes, setAttributes } ) {
-	const { text, alignment, style, shadow, shadowOpacity } = attributes;
+	const { text, textAlignment, style, shadow, shadowOpacity } = attributes;
 
 	const onChangeText = ( txt ) => {
 		setAttributes( { text: txt } );
 	};
 
 	const onChangeAlignment = ( val ) => {
-		setAttributes( { alignment: val } );
+		setAttributes( { textAlignment: val } );
 	};
 
 	const onChangeShadowOpacity = ( newOpacity ) => {
@@ -37,7 +37,7 @@ export default function Edit( { attributes, setAttributes } ) {
 		setAttributes( { shadow: ! shadow } );
 	};
 
-	const classes = classnames( `text-box-align-${ alignment }`, {
+	const classes = classnames( `text-box-align-${ textAlignment }`, {
 		'has-shadow': shadow,
 		[ `shadow-opacity-${ shadowOpacity }` ]: shadow && shadowOpacity,
 	} );
@@ -87,7 +87,7 @@ export default function Edit( { attributes, setAttributes } ) {
 			>
 				<AlignmentToolbar
 					onChange={ onChangeAlignment }
-					value={ alignment }
+					value={ textAlignment }
 				/>
 			</BlockControls>
 
@@ -100,7 +100,7 @@ export default function Edit( { attributes, setAttributes } ) {
 					onChange={ onChangeText }
 					value={ text }
 					placeholder={ __( 'Your Text', 'text-box' ) }
-					tagName="h4"
+					tagName="p"
 					allowedFormats={ [] }
 					className="text-box-title"
 				/>
